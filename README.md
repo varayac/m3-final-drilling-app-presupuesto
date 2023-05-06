@@ -21,7 +21,7 @@ Crear una aplicación de presupuesto llamada: "Presupuesto App". El objetivo de 
 
 1. Se crea interface responsiva y se utilizan etiquetas semanticas. ✅
 2. Se modularizan los archivos correspondientes al maquetado, diseño y logica. ✅
-3. Se utiliza en lo posible buenas practicas de desarrollo con JavaScript ES6
+3. Se utiliza en lo posible buenas practicas de desarrollo con JavaScript ES6 ✅
 4. Se realiza entrega de proyecto en plataforma interna.
 
 ![screen-app](./assets/img/project/screen-app.png)

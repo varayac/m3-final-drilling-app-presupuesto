@@ -35,7 +35,7 @@
                             <input type="number" class="form-control" id="inputBudget">
                             <button class="btn btn-outline-secondary" type="button" id="btnBudget">Agregar</button>
                         </div>
-                        <p class="invalid-feedback error-messages">Ingrese solo números</p>
+                        <p class="invalid-feedback error-alerts">Ingrese solo números</p>
                     </div>
                 </div>
                 <!-- Fin Card Presupuesto -->
@@ -46,7 +46,7 @@
                         <h4>GASTOS</h4>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Gasto</span>
                                 <input type="text" class="form-control" id="inputExpenseName">
@@ -55,17 +55,17 @@
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <p class="invalid-feedback error-messages">Ingrese un gasto</p>
+                                    <p class="invalid-feedback error-alerts">Ingrese un gasto</p>
                                 </div>
                                 <div class="col-6">
-                                    <p class="invalid-feedback error-messages">Ingrese solo números</p>
+                                    <p class="invalid-feedback error-alerts">Ingrese solo números</p>
                                 </div>
                             </div>
                             <div>
-                                <button id="btnAddExpense" type="submit"
+                                <button id="btnAddExpense" type="button"
                                     class="btn btn-outline-secondary w-100">Añadir</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <!-- Fin Card Gastos -->
@@ -116,12 +116,12 @@
                                             <th scope="col"><i class="bi bi-trash3-fill"></i></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
+                                    <tbody id="tbody">
+                                        <tr id="">
                                             <td class="">Arriendo</td>
                                             <td class="">$400.000</td>
                                             <td class="">05-05-2023 11:30</td>
-                                            <td class=""><i class="bi bi-x-lg"></i></td>
+                                            <td><a href="#" onclick=" "><i class="bi bi-x-lg"></i></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
