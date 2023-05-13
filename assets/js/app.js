@@ -56,7 +56,7 @@ const pintarPresupuestoYsaldoInicial = () => {
     parrafoPresupuesto.textContent = `$${presupuestoString}`
     parrafoSaldo.textContent = `$${presupuestoString}`
 
-    limpiarInputs()
+    // limpiarInputs()
     habilitarModuloGastos()
 }
 
@@ -91,7 +91,7 @@ const pintarTotalGastos = () => {
         console.log('TOTAL_GASTOS: ' + totalGastos)
         console.log('SALDO_ACTUAL: ' + saldoActual)
     }
-    limpiarInputs()
+    // limpiarInputs()
 }
 
 // FUNCION QUE PINTA LA TABLA
@@ -146,7 +146,7 @@ const habilitarModuloGastos = () => {
 }
 
 // VALIDACION DE INPUTS Y MENSAJES DE ERROR
-const validarInputPresupuesto = () => {
+/* const validarInputPresupuesto = () => {
     const inputPresupuesto = document.getElementById('inputBudget')
     const btnPresupuesto = document.getElementById('btnBudget')
     const alerta = document.querySelectorAll('.error-alerts')
@@ -173,9 +173,9 @@ const validarInputPresupuesto = () => {
             alerta[0].classList.add('invalid-feedback')
         }
     }
-}
+} */
 
-const validarInputNombreGasto = () => {
+/* const validarInputNombreGasto = () => {
     const inputNombreGasto = document.getElementById('inputExpenseName')
     const btnGasto = document.getElementById('btnAddExpense')
     const alerta = document.querySelectorAll('.error-alerts')
@@ -199,16 +199,16 @@ const validarInputNombreGasto = () => {
             alerta[1].classList.add('invalid-feedback')
         }
     }
-}
+} */
 
-const validarInputCantidadGasto = () => {
+/* const validarInputCantidadGasto = () => {
     const inputCantidadGasto = document.getElementById('inputExpense')
     const btnGasto = document.getElementById('btnAddExpense')
     const alerta = document.querySelectorAll('.error-alerts')
     const regExpNumerico = /^[1-9]\d{0,8}$/
 
     if (inputCantidadGasto.value.length === 0) {
-        console.log('RESULTA PLSSS')
+        // console.log('RESULTA PLSSS')
         inputCantidadGasto.classList.add('is-invalid')
         // btnGasto.classList.add('disabled')
         btnGasto.setAttribute('disabled', true)
@@ -226,7 +226,7 @@ const validarInputCantidadGasto = () => {
             alerta[2].classList.add('invalid-feedback')
         }
     }
-}
+} */
 
 // LIMPIEZA DE INPUTS Y BLOQUEO DE BOTONES
 const limpiarInputs = () => {
@@ -257,7 +257,7 @@ main.addEventListener('click', (e) => {
     if (e.target.id === 'btnAddExpense') pintarTotalGastos()
 })
 
-main.addEventListener('input', (e) => {
+/* main.addEventListener('input', (e) => {
     if (e.target.id === 'inputBudget') validarInputPresupuesto()
     if (e.target.id === 'inputExpenseName') validarInputNombreGasto()
     if (e.target.id === 'inputExpense') validarInputCantidadGasto()
@@ -266,4 +266,4 @@ main.addEventListener('input', (e) => {
 // Ejecuta limpieza antes de todo
 document.addEventListener('DOMContentLoaded', () => {
     limpiarInputs()
-})
+}) */
