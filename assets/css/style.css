@@ -40,6 +40,19 @@ footer a {
     color: #fff;
 }
 
+.reset a {
+    text-decoration: none;
+    color: gray;
+}
+
 footer i {
     color: #DE2129;
+}
+
+.error-alerts {
+    color: #DE2129;
+}
+
+#x {
+    color: #1f3259;
 }
