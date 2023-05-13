@@ -46,9 +46,6 @@ const pintarPresupuestoYsaldoInicial = () => {
     const parrafoSaldo = document.getElementById('totalRemaining')
 
     const presupuestoNumerico = parseInt(inputPresupuesto)
-
-    // validarInputsNumericos()
-
     presupuesto += presupuestoNumerico
     saldoActual = presupuestoNumerico
 
@@ -83,8 +80,8 @@ const pintarTotalGastos = () => {
         parrafoGastos.textContent = `$${totalGastosFormateado}`
         parrafoSaldo.textContent = `$${saldoActualFormateado}`
 
-        alert[3].classList.add('invalid-feedback')
         pintarTabla(GASTO)
+        alert[3].classList.add('invalid-feedback')
 
         console.log(arrayGastos)
         console.log('PRESUPUESTO: ' + presupuesto)
@@ -126,12 +123,12 @@ const eliminarGasto = (id) => {
 
         const totalGastosFormateado = totalGastos.toLocaleString()
         const saldoActualFormateado = saldoActual.toLocaleString()
-        document.getElementById('totalRemaining').textContent = `$${saldoActualFormateado}`
-        document.getElementById('totalExpenses').textContent = `$${totalGastosFormateado}`
-        // const parrafoGastos = document.getElementById('totalExpenses')
-        // const parrafoSaldo = document.getElementById('totalRemaining')
-        // parrafoGastos.textContent = `$${totalGastosFormateado}`
-        // parrafoSaldo.textContent = `$${saldoActualFormateado}`
+        // document.getElementById('totalRemaining').textContent = `$${saldoActualFormateado}`
+        // document.getElementById('totalExpenses').textContent = `$${totalGastosFormateado}`
+        const parrafoGastos = document.getElementById('totalExpenses')
+        const parrafoSaldo = document.getElementById('totalRemaining')
+        parrafoGastos.textContent = `$${totalGastosFormateado}`
+        parrafoSaldo.textContent = `$${saldoActualFormateado}`
     }
 
     console.info('TOTAL_GASTOS: ' + totalGastos)
@@ -229,7 +226,7 @@ const habilitarModuloGastos = () => {
 } */
 
 // LIMPIEZA DE INPUTS Y BLOQUEO DE BOTONES
-const limpiarInputs = () => {
+/* const limpiarInputs = () => {
     const alerta = document.querySelectorAll('.error-alerts')
     document.getElementById('inputBudget').value = ''
     document.getElementById('inputBudget').classList.remove('is-invalid')
@@ -243,7 +240,7 @@ const limpiarInputs = () => {
     alerta[1].classList.add('invalid-feedback')
     alerta[2].classList.add('invalid-feedback')
     // alerta[3].classList.add('invalid-feedback')
-}
+} */
 
 // REFRESCA PAGINA COMPLETA
 const refrescarPagina = () => {
