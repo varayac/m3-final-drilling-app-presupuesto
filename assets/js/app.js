@@ -5,12 +5,6 @@ let totalGastos = 0
 let saldoActual = 0
 const arrayGastos = []
 
-// FUNCION QUE GENERA UN NUEVO ID
-const nuevoId = () => {
-    id++
-    return id
-}
-
 // FUNCION QUE OBTIENE LA FECHA/HORA ACTUAL Y LA FORMATEA
 const fechaActual = () => {
     const fechaActual = new Date()
@@ -39,6 +33,12 @@ const objGasto = (nombre, valor) => {
     return JSON.parse(JSON.stringify(GASTO))
 }
 
+// FUNCION QUE GENERA UN NUEVO ID
+const nuevoId = () => {
+    id++
+    return id
+}
+
 // FUNCION QUE TOMA EL VALOR DE PRESUPUESTO, LO PARSEA Y PINTA
 const pintarPresupuestoYsaldoInicial = () => {
     const inputPresupuesto = document.getElementById('inputBudget').value
@@ -64,15 +64,23 @@ const pintarTotalGastos = () => {
     const parrafoGastos = document.getElementById('totalExpenses')
     const parrafoSaldo = document.getElementById('totalRemaining')
     const alert = document.querySelectorAll('.error-alerts')
+    const btnGasto = document.getElementById('btnAddExpense')
     const GASTO = objGasto(inputNombreGasto, inputCantidadGasto)
 
-    totalGastos += GASTO.valor
-    saldoActual -= GASTO.valor
+    const nuevoSaldo = saldoActual - GASTO.valor
 
-    if (saldoActual < 0) {
+    if (nuevoSaldo < 0) {
+        // saldoActual = GASTO.valor
+        console.log('Nuevo Saldo (if): ' + nuevoSaldo)
         console.warn('SALDO INSUFICIENTE')
         alert[3].classList.remove('invalid-feedback')
+        btnGasto.classList.add('disabled')
+        // document.querySelector('fieldset').disabled = true
     } else {
+        totalGastos += GASTO.valor
+        // saldoActual -= GASTO.valor
+        saldoActual = nuevoSaldo
+
         arrayGastos.push(GASTO)
         const saldoActualFormateado = saldoActual.toLocaleString()
         const totalGastosFormateado = totalGastos.toLocaleString()
@@ -84,6 +92,7 @@ const pintarTotalGastos = () => {
         alert[3].classList.add('invalid-feedback')
 
         console.log(arrayGastos)
+        console.log('ID GLOBAL: ' + id)
         console.log('PRESUPUESTO: ' + presupuesto)
         console.log('TOTAL_GASTOS: ' + totalGastos)
         console.log('SALDO_ACTUAL: ' + saldoActual)
@@ -110,7 +119,7 @@ const pintarTabla = (GASTO) => {
 // FUNCION QUE ELIMINA UNA FILA DE LA TABLA Y RESTAURA LOS VALORES EN GASTO TOTAL Y SALDO
 const eliminarGasto = (id) => {
     const gastoIndex = arrayGastos.findIndex((item) => item.id === id)
-    console.log(gastoIndex)
+    console.log('INDEX ELIMINADO: ' + gastoIndex)
 
     if (gastoIndex !== -1) {
         const gastoEliminado = arrayGastos.splice(gastoIndex, 1)[0]
@@ -131,8 +140,14 @@ const eliminarGasto = (id) => {
         parrafoSaldo.textContent = `$${saldoActualFormateado}`
     }
 
-    console.info('TOTAL_GASTOS: ' + totalGastos)
-    console.info('SALDO_ACTUAL: ' + saldoActual)
+    const alert = document.querySelectorAll('.error-alerts')
+    // const btnGasto = document.getElementById('btnAddExpense')
+    // btnGasto.classList.remove('disabled')
+    alert[3].classList.add('invalid-feedback')
+
+    console.log('ID GLOBAL: ' + id)
+    console.log('TOTAL_GASTOS: ' + totalGastos)
+    console.log('SALDO_ACTUAL: ' + saldoActual)
 }
 
 // FUNCION QUE HABILITA EL MODULO GASTO
@@ -143,7 +158,7 @@ const habilitarModuloGastos = () => {
 }
 
 // VALIDACION DE INPUTS Y MENSAJES DE ERROR
-/* const validarInputPresupuesto = () => {
+const validarInputPresupuesto = () => {
     const inputPresupuesto = document.getElementById('inputBudget')
     const btnPresupuesto = document.getElementById('btnBudget')
     const alerta = document.querySelectorAll('.error-alerts')
@@ -170,9 +185,9 @@ const habilitarModuloGastos = () => {
             alerta[0].classList.add('invalid-feedback')
         }
     }
-} */
+}
 
-/* const validarInputNombreGasto = () => {
+const validarInputNombreGasto = () => {
     const inputNombreGasto = document.getElementById('inputExpenseName')
     const btnGasto = document.getElementById('btnAddExpense')
     const alerta = document.querySelectorAll('.error-alerts')
@@ -196,9 +211,9 @@ const habilitarModuloGastos = () => {
             alerta[1].classList.add('invalid-feedback')
         }
     }
-} */
+}
 
-/* const validarInputCantidadGasto = () => {
+const validarInputCantidadGasto = () => {
     const inputCantidadGasto = document.getElementById('inputExpense')
     const btnGasto = document.getElementById('btnAddExpense')
     const alerta = document.querySelectorAll('.error-alerts')
@@ -223,10 +238,10 @@ const habilitarModuloGastos = () => {
             alerta[2].classList.add('invalid-feedback')
         }
     }
-} */
+}
 
 // LIMPIEZA DE INPUTS Y BLOQUEO DE BOTONES
-/* const limpiarInputs = () => {
+const limpiarInputs = () => {
     const alerta = document.querySelectorAll('.error-alerts')
     document.getElementById('inputBudget').value = ''
     document.getElementById('inputBudget').classList.remove('is-invalid')
@@ -240,7 +255,7 @@ const habilitarModuloGastos = () => {
     alerta[1].classList.add('invalid-feedback')
     alerta[2].classList.add('invalid-feedback')
     // alerta[3].classList.add('invalid-feedback')
-} */
+}
 
 // REFRESCA PAGINA COMPLETA
 const refrescarPagina = () => {
@@ -254,7 +269,7 @@ main.addEventListener('click', (e) => {
     if (e.target.id === 'btnAddExpense') pintarTotalGastos()
 })
 
-/* main.addEventListener('input', (e) => {
+main.addEventListener('input', (e) => {
     if (e.target.id === 'inputBudget') validarInputPresupuesto()
     if (e.target.id === 'inputExpenseName') validarInputNombreGasto()
     if (e.target.id === 'inputExpense') validarInputCantidadGasto()
@@ -263,4 +278,4 @@ main.addEventListener('click', (e) => {
 // Ejecuta limpieza antes de todo
 document.addEventListener('DOMContentLoaded', () => {
     limpiarInputs()
-}) */
+})
